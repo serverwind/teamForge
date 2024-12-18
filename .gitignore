@@ -11,12 +11,14 @@ node_modules
 dist
 dist-ssr
 *.local
+.gitignore
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+.vite
 *.suo
 *.ntvs*
 *.njsproj
