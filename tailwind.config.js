@@ -3,11 +3,17 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      dark: "#344472",
-      gray: "#707070",
-      lightGray: "#F6F6F6",
-      lightBlue: "#F5FBFF",
+      darkGrey: "#344472",
+      grey: "#707070",
+      lightGray: "9C9C9C",
+      lightestGrey: "#D1D1D1",
+      lightestGrey1: "#F6F6F6",
+      darkRed: "#C60E2E",
       red: "#E4163A",
+      lightRed: "#FF5761",
+      lightestRed: "FF768E",
+      blue: "#344472",
+      lightBlue: "#F5FBFF",
       white: "#FFFFFF"
     },
     extend: {},
