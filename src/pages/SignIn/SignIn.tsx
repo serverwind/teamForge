@@ -1,4 +1,5 @@
-import { Formik, Field } from "formik";
+import { ErrorMessage, Formik, Field } from "formik";
+import * as Yup from "yup";
 import bg from "../../assets/sign-in-bg.png";
 
 const SignInForm = () => {
@@ -7,17 +8,24 @@ const SignInForm = () => {
       initialValues={{ login: "", password: "" }}
       onSubmit={(values) => {
         console.log(values);
-      }}>
+      }}
+      validationSchema={Yup.object({
+        login: Yup.string().required("Required").max(20, 'Must be 20 characters or less'),
+        password: Yup.string().required("Required").max(20, 'Must be 20 characters or less'),
+      })}
+    >
       {formik => (
         <form onSubmit={formik.handleSubmit} className="flex flex-col gap-6 min-w-[99%] sm:min-w-[75%]">
           <h1 className="text-darkGrey text-center sm:text-left text-4xl mb-2">Sign In</h1>
           <div className="flex flex-col gap-2">
             <label className="text-grey text-sm" htmlFor="login"> Login </label>
             <Field className="bg-lightestGrey1 h-10 rounded px-3 py-2 text-sm hover:bg-lightestGrey transition duration-300 focus:shadow-outline focus:outline-none" name="login" type="text" />
+            <ErrorMessage name="login" component="div" className="text-xs text-lightRed" />
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-grey text-sm" htmlFor="password"> Password </label>
             <Field className="bg-lightestGrey1 h-10 rounded px-3 py-2 text-sm  hover:bg-lightestGrey transition duration-300 focus:shadow-outline focus:outline-none" name="password" type="password" />
+            <ErrorMessage name="password" component="div" className="text-xs text-lightRed" />
           </div>
           <button className="bg-red text-white px-4 py-2 rounded hover:bg-lightRed transition duration-300">Sign In</button>
           <div className="text-center">
