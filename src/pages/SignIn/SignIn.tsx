@@ -3,7 +3,7 @@ import bg from "../../assets/sign-in-bg.png";
 
 export const SignIn = () => {
   return (
-    <section className="bg-lightBlue sm:grid sm:grid-cols-[42%_58%] items-center justify-items-center h-screen">
+    <section className="bg-lightBlue sm:grid sm:grid-cols-[42%_58%] items-center justify-items-center h-screen py-10">
       <div className="w-full bg-white h-full grid place-items-center px-5 sm:px-10">
         <SignInForm />
       </div>
