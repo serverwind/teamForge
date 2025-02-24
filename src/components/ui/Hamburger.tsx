@@ -1,5 +1,9 @@
-import hamburger from "../../assets/hamburger.svg"
+import hamburger from "../../assets/hamburger.svg";
 
-export const Hamburger = () => {
-  return <img className="cursor-pointer sm:hidden absolute left-4" src={hamburger} alt="Menu" />
+interface HamburgerProps {
+  toggleSidebar: () => void;
 }
+
+export const Hamburger = ({ toggleSidebar }: HamburgerProps) => {
+  return <img className="cursor-pointer sm:hidden absolute left-4" src={hamburger} alt="Menu" onClick={toggleSidebar} />;
+};
