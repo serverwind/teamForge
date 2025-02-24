@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthLink } from "../../components/ui/AuthLink";
-import { Button } from "../../components/ui/Button";
+import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { InputForm } from "../../components/ui/InputForm";
 import { Heading } from "../ui/Heading";
 
@@ -26,7 +26,7 @@ export const SignInForm = () => {
           <div className="flex flex-col gap-2">
             <InputForm label="Password" name="password" />
           </div>
-          <Button text="Sign In" />
+          <ConfirmButton text="Sign In" />
           <AuthLink text="Sign Up" question="Not a member yet?" link="/sign-up" />
         </form>
       )}

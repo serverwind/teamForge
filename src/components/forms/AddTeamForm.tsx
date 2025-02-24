@@ -1,5 +1,7 @@
 import { Formik } from "formik";
 import { InputForm } from "../ui/InputForm";
+import { ConfirmButton } from "../ui/ConfirmButton";
+import { CancelButton } from "../ui/CancelButton";
 import * as Yup from 'yup';
 
 export const AddTeamForm = () => {
@@ -17,7 +19,7 @@ export const AddTeamForm = () => {
       })}
     >
       {formik => (
-        <form onSubmit={formik.handleSubmit} className="flex flex-col gap-6 max-w-[60%]">
+        <form onSubmit={formik.handleSubmit} className="flex flex-col gap-6 sm:max-w-[80%]">
           <div className="flex flex-col gap-2">
             <InputForm label="Name" name="name" />
           </div>
@@ -29,6 +31,10 @@ export const AddTeamForm = () => {
           </div>
           <div className="flex flex-col gap-2">
             <InputForm label="Year of foundation" name="year" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <CancelButton text="Cancel" />
+            <ConfirmButton text="Save" />
           </div>
         </form>
       )}

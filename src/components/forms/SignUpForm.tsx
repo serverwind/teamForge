@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthLink } from "../../components/ui/AuthLink";
-import { Button } from "../../components/ui/Button";
+import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { InputForm } from "../../components/ui/InputForm";
 import { Checkbox } from "../ui/Checkbox";
 import { Heading } from "../ui/Heading";
@@ -39,7 +39,7 @@ export const SignUpForm = () => {
           <div className="flex flex-col gap-2">
             <Checkbox label="I accept the agreement" name="agreement" />
           </div>
-          <Button text="Sign Up" />
+          <ConfirmButton text="Sign Up" />
           <AuthLink text="Sign In" question="Already a member?" link="/sign-in" />
         </form>
       )}

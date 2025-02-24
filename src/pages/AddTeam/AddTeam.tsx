@@ -11,10 +11,10 @@ export const AddTeam = () => {
       <section className="sm:grid sm:grid-cols-[10%_90%] h-full">
         <Sidebar />
 
-        <div className="bg-white my-6 mx-16 rounded-md">
+        <div className="bg-white my-6 sm:mx-16 py-6 px-4 sm:px-10 rounded-md">
           <Breadcrumbs link="/teams" text="Teams" current="Add new team" />
 
-          <div className="sm:grid sm:grid-cols-[1fr_2fr] mx-20 gap-10">
+          <div className="grid sm:grid-cols-[40%_60%] sm:mx-10 mt-10 gap-10 sm:gap-20">
             <AttachImg />
             <AddTeamForm />
           </div>

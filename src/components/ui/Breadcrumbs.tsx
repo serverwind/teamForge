@@ -8,7 +8,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ link, text, current }: BreadcrumbsProps) => {
   return (
-    <div className="py-6 px-10">
+    <div>
       <Link to={link} className="text-sm text-darkRed">
         {text}
       </Link>
