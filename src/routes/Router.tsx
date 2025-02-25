@@ -4,6 +4,7 @@ import PublicRoute from "./PublicRoute";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { SignUp } from "../pages/SignUp/SignUp";
 import { AddTeam } from "../pages/AddTeam/AddTeam";
+import { AddPlayer } from "../pages/AddPlayer/AddPlayer";
 
 export const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/add-team" element={<AddTeam />} />
+        <Route path="/add-player" element={<AddPlayer />} />
       </Routes>
     </BrowserRouter>
   );
