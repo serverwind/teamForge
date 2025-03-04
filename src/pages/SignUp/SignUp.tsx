@@ -16,7 +16,7 @@ export const SignUp = () => {
         <img src={bg} alt="TeamForge Sign In" />
       </div>
 
-      {success ? <Notification text="Registration was successful. Now you can Sign In." result={ success } link="/sign-in" /> : <Notification text="Login is already used." result={ error } />}
+      {success ? <Notification text="Registration was successful. Now you can Sign In." isVisible={ success } link="/sign-in" /> : <Notification text="Login is already used." isVisible={ error } />}
 
       <div className={`absolute top-0 sm:top-4 sm:right-4 bg-lightRed px-4 py-2 text-white sm:rounded transition-all duration-300 ease-in-out ${error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>Login is already used.</div>
     </section>

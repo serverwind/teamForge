@@ -15,7 +15,7 @@ export const SignIn = () => {
         <img src={bg} alt="TeamForge Sign In" />
       </div>
 
-      <Notification result={error} text="User with the specified username / password was not found." />
+      <Notification isVisible={error} text="User with the specified username / password was not found." />
     </section>
   );
 };
