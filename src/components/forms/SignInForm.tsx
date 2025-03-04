@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector  } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
 import { login } from "../../store/authReducer"
 import { AuthLink } from "../../components/ui/AuthLink";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
@@ -13,9 +14,11 @@ export const SignInForm = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(state => state.auth.isAuth);
 
-  if (isAuth) {
-    navigate('/teams');
-  }
+  useEffect(() => {
+    if (isAuth) {
+      navigate('/teams');
+    }
+  })
 
   return (
     <Formik 

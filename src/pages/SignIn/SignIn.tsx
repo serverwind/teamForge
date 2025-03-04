@@ -1,4 +1,5 @@
 import { SignInForm } from "../../components/forms/SignInForm";
+import { Notification } from "../../components/ui/Notification";
 import { useSelector } from "react-redux";
 import bg from "../../assets/sign-in-bg.png";
 
@@ -14,7 +15,7 @@ export const SignIn = () => {
         <img src={bg} alt="TeamForge Sign In" />
       </div>
 
-      <div className={`absolute top-0 sm:top-4 sm:right-4 bg-lightRed px-4 py-2 text-white sm:rounded transition-all duration-300 ease-in-out ${ error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>User with the specified username / password was not found.</div>
+      <Notification result={error} text="User with the specified username / password was not found." />
     </section>
   );
 };

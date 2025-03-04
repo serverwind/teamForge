@@ -21,14 +21,18 @@ const authSlice = createSlice({
     login: (state, action) => {
       const { login, password } = action.payload;
       if (state.users.find((user) => user.login === login && user.password === password)) {
+        console.log("login success");
         state.isAuth = true;
         state.error = false;
       } else {
+        console.log("login error");
         state.error = true;
       }
     },
     logout: (state) => {
       state.isAuth = false;
+      state.error = false;
+      state.regSuccess = false;
     },
     register: (state, action) => {
       const { login, password, name } = action.payload;
