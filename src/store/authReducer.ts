@@ -4,6 +4,7 @@ const initialState = {
   isAuth: false,
   error: false,
   regSuccess: false,
+  user: null,
   users: [
     {
       id: 1,
@@ -20,12 +21,13 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       const { login, password } = action.payload;
-      if (state.users.find((user) => user.login === login && user.password === password)) {
-        console.log("login success");
+      const user = state.users.find((user) => user.login === login && user.password === password);
+      if (user) {
         state.isAuth = true;
         state.error = false;
+        state.regSuccess = false;
+        state.user = user;
       } else {
-        console.log("login error");
         state.error = true;
       }
     },
