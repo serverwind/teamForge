@@ -1,16 +1,27 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector  } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { login } from "../../store/authReducer"
 import { AuthLink } from "../../components/ui/AuthLink";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { InputForm } from "../../components/ui/InputForm";
 import { Heading } from "../ui/Heading";
 
 export const SignInForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuth = useSelector(state => state.auth.isAuth);
+
+  if (isAuth) {
+    navigate('/teams');
+  }
+
   return (
     <Formik 
       initialValues={{ login: "", password: "" }}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(login({ login: values.login, password: values.password }))
       }}
       validationSchema={Yup.object({
         login: Yup.string().required("Required").max(20, 'Must be 20 characters or less'),

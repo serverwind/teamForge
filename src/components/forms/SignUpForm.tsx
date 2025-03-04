@@ -1,5 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { register } from "../../store/authReducer";
 import { AuthLink } from "../../components/ui/AuthLink";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { InputForm } from "../../components/ui/InputForm";
@@ -7,11 +9,13 @@ import { Checkbox } from "../ui/Checkbox";
 import { Heading } from "../ui/Heading";
 
 export const SignUpForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik 
       initialValues={{ name: "", login: "", password: "", confirmPassword: "", agreement: false }}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(register({ name: values.name, login: values.login, password: values.password }))
       }}
       validationSchema={Yup.object({
         name: Yup.string().required("Required").max(20, 'Must be 20 characters or less'),
