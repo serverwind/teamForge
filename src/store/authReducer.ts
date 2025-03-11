@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// After all done, change isAuth to false and user to null.
+
 const initialState = {
-  isAuth: false,
+  isAuth: true,
   error: false,
   regSuccess: false,
-  user: null,
+  user: {
+    id: 1,
+    login: "admin",
+    password: "123456",
+    name: "Admin",
+  },
   users: [
     {
       id: 1,

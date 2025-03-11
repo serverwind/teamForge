@@ -1,7 +1,7 @@
 import { ErrorMessage, Field } from "formik";
 
 interface InputFormProps {
-  label: string;
+  label: string | null;
   name: string;
 }
 
