@@ -14,9 +14,16 @@ export default {
       lightestRed: "FF768E",
       blue: "#344472",
       lightBlue: "#F5FBFF",
-      white: "#FFFFFF"
+      white: "#FFFFFF",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        gradientGray: "linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%)",
+      },
+      backgroundColor: {
+        dark: "#303030",
+      }
+    },
   },
   plugins: [],
 };
