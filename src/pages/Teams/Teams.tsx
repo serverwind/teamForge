@@ -22,13 +22,13 @@ export const Teams = ({ teams }) => {
             <Search />
             <ConfirmButton text="Add +" />
           </div>
-          <section className="grid grid-cols-2 gap-4 mt-4">
+          <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
             {teams.map((team) => (
               <div>
-                <div className="bg-gradientGray rounded-t text-center px-2 py-4">
-                  <img src={team.logo} alt={team.name} />
+                <div className="bg-gradientGray rounded-t text-center py-12">
+                  <img src={team.logo} alt={team.name} className="w-36 h-36 mx-auto" />
                 </div>
-                <div className="bg-dark text-center px-2 py-4 rounded-b">
+                <div className="bg-dark text-center px-2 py-4 sm:py-6 rounded-b">
                   <div key={team.id} className="text-sm text-white font-bold mb-2">
                     {team.name}
                   </div>
