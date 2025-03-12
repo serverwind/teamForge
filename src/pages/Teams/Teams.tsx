@@ -43,7 +43,7 @@ export const Teams = ({ teams, totalPages, currentPage, setCurrentPage }: TeamsP
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 px-2 sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
-            <Search />
+            <Search setCurrentPage={setCurrentPage} />
             <ConfirmButton text="Add +" />
           </div>
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
