@@ -1,4 +1,5 @@
 import { teamsLogos } from "../assets/teamsLogos";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface Team {
   id: number;
@@ -10,7 +11,9 @@ interface Team {
 }
 
 interface TeamsState {
-  teams: Team[]
+  teams: Team[];
+  filteredTeams: Team[];
+  searched: boolean;
 }
 
 const initialState: TeamsState = {
@@ -29,11 +32,26 @@ const initialState: TeamsState = {
     { id: 12, name: "Milwaukee Bucks", division: "North", conference: "Central", year: "1968", logo: teamsLogos.team12 },
     { id: 13, name: "Dallas Mavericks", division: "East", conference: "Western", year: "1980", logo: teamsLogos.team13 },
   ],
+  filteredTeams: [],
+  searched: false,
 };
 
-export const teamsReducer = (state = initialState, action: { type: string; }) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const teamsSlice = createSlice({
+  name: "teams",
+  initialState,
+  reducers: {
+    searchTeams: (state, action) => {
+      const query = action.payload.toLowerCase();
+      if (query.length >= 3) {
+        state.filteredTeams = state.teams.filter((team) => team.name.toLowerCase().includes(query));
+        state.searched = true;
+      } else {
+        state.filteredTeams = [...state.teams];
+        state.searched = false;
+      }
+    },
+  },
+});
+
+export const { searchTeams } = teamsSlice.actions;
+export default teamsSlice.reducer;

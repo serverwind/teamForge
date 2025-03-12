@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./authReducer";
-import { teamsReducer } from "./teamsReducer";
+import { teamsSlice } from "./teamsReducer";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    teams: teamsReducer,
+    teams: teamsSlice.reducer,
   },
 });
 
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export default store;

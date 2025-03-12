@@ -4,7 +4,20 @@ import { useState } from "react";
 import { Search } from "../../components/ui/Search";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 
-export const Teams = ({ teams }) => {
+interface TeamsProps {
+  teams: [];
+}
+
+interface Team {
+  id: number;
+  name: string;
+  division: string;
+  conference: string;
+  year: string;
+  logo: string;
+}
+
+export const Teams = ({ teams }: TeamsProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -23,7 +36,7 @@ export const Teams = ({ teams }) => {
             <ConfirmButton text="Add +" />
           </div>
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
-            {teams.map((team) => (
+            {teams.map((team: Team) => (
               <div>
                 <div className="bg-gradientGray rounded-t text-center py-12">
                   <img src={team.logo} alt={team.name} className="sm:w-36 sm:h-36 w-16 h-16 mx-auto" />
