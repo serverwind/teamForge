@@ -14,6 +14,8 @@ interface TeamsState {
   teams: Team[];
   filteredTeams: Team[];
   searched: boolean;
+  itemsPerPage: number;
+  page: 1;
 }
 
 const initialState: TeamsState = {
@@ -34,6 +36,8 @@ const initialState: TeamsState = {
   ],
   filteredTeams: [],
   searched: false,
+  itemsPerPage: 6,
+  page: 1,
 };
 
 export const teamsSlice = createSlice({

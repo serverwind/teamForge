@@ -6,12 +6,14 @@ export const TeamsContainer = () => {
   const teams = useSelector((state: RootState) => state.teams.teams);
   const filteredTeams = useSelector((state: RootState) => state.teams.filteredTeams);
   const searched = useSelector((state: RootState) => state.teams.searched);
+  const itemsPerPage = useSelector((state: RootState) => state.teams.itemsPerPage);
+  const page = useSelector((state: RootState) => state.teams.page);
+  const totalPages = Math.ceil(teams.length / itemsPerPage);
 
+  let displayedTeams = teams.slice(page-1, itemsPerPage);
   if (searched) {
-    return <Teams teams={filteredTeams} />;
+    displayedTeams = filteredTeams;
   }
 
-  const displayedTeams = filteredTeams.length > 0 ? filteredTeams : teams;
-
-  return <Teams teams={displayedTeams} />;
+  return <Teams teams={displayedTeams} totalPages={totalPages} />;
 };
