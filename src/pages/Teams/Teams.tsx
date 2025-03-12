@@ -1,13 +1,16 @@
 import { Header } from "../../components/ui/Header";
 import { Sidebar } from "../../components/ui/Sidebar";
 import { TeamCard } from "../../components/ui/TeamCard";
-import { useState } from "react";
+import { Pagination } from "../../components/ui/Pagination";
+import { useState, useEffect } from "react";
 import { Search } from "../../components/ui/Search";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 
 interface TeamsProps {
   teams: [];
   totalPages: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 }
 
 interface Team {
@@ -19,12 +22,19 @@ interface Team {
   logo: string;
 }
 
-export const Teams = ({ teams, totalPages }: TeamsProps) => {
+export const Teams = ({ teams, totalPages, currentPage, setCurrentPage }: TeamsProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    setAnimate(true);
+    const timer = setTimeout(() => setAnimate(false), 300);
+    return () => clearTimeout(timer);
+  }, [currentPage]);
 
   return (
     <>
@@ -36,11 +46,16 @@ export const Teams = ({ teams, totalPages }: TeamsProps) => {
             <Search />
             <ConfirmButton text="Add +" />
           </div>
-          <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
+          <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
             {teams.map((team: Team) => (
-              <TeamCard key={team.id} team={team} />
+              <div key={`${team.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>
+                <TeamCard team={team} />
+              </div>
             ))}
           </section>
+          <div>
+            <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          </div>
         </div>
       </section>
     </>

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import { Teams } from "../pages/Teams/Teams";
 import { RootState } from "../store/store";
 
@@ -7,13 +8,19 @@ export const TeamsContainer = () => {
   const filteredTeams = useSelector((state: RootState) => state.teams.filteredTeams);
   const searched = useSelector((state: RootState) => state.teams.searched);
   const itemsPerPage = useSelector((state: RootState) => state.teams.itemsPerPage);
-  const page = useSelector((state: RootState) => state.teams.page);
-  const totalPages = Math.ceil(teams.length / itemsPerPage);
 
-  let displayedTeams = teams.slice(page-1, itemsPerPage);
+  let displayedTeams = teams;
   if (searched) {
     displayedTeams = filteredTeams;
   }
 
-  return <Teams teams={displayedTeams} totalPages={totalPages} />;
+  // pagination
+  const totalItems = displayedTeams.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedTeams = displayedTeams.slice(startIndex, endIndex);
+
+  return <Teams teams={paginatedTeams} totalPages={totalPages} setCurrentPage={setCurrentPage} currentPage={currentPage} />;
 };
