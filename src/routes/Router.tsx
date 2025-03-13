@@ -7,6 +7,7 @@ import { AddTeam } from "../pages/AddTeam/AddTeam";
 import { AddPlayer } from "../pages/AddPlayer/AddPlayer";
 import { TeamsContainer } from "../containers/TeamsContainer";
 import { PlayersContainer } from "../containers/PlayersContainer";
+import { Team } from "../pages/Team/Team";
 
 export const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ export const AppRoutes = () => {
         <Route path="/add-player" element={<AddPlayer />} />
         <Route path="/teams" element={<TeamsContainer />} />
         <Route path="/players" element={<PlayersContainer />} />
+        <Route path="/team/:id" element={<Team />} />
       </Routes>
     </BrowserRouter>
   );
