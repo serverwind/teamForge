@@ -6,18 +6,19 @@ import { SignUp } from "../pages/SignUp/SignUp";
 import { AddTeam } from "../pages/AddTeam/AddTeam";
 import { AddPlayer } from "../pages/AddPlayer/AddPlayer";
 import { TeamsContainer } from "../containers/TeamsContainer";
-import { Teams } from "../pages/Teams/Teams";
+import { PlayersContainer } from "../containers/PlayersContainer";
 
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PrivateRoute><Teams /></PrivateRoute>} />
+        <Route path="/" element={<PrivateRoute><TeamsContainer /></PrivateRoute>} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/add-team" element={<AddTeam />} />
         <Route path="/add-player" element={<AddPlayer />} />
         <Route path="/teams" element={<TeamsContainer />} />
+        <Route path="/players" element={<PlayersContainer />} />
       </Routes>
     </BrowserRouter>
   );

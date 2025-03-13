@@ -26,4 +26,4 @@ export const teamsLogos = {
   team11,
   team12,
   team13,
-} as const; // as const для строгой типизации
+} as const;
