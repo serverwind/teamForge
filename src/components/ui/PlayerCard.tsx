@@ -1,12 +1,19 @@
+interface Player {
+  id: number;
+  teamId: number;
+  name: string;
+  photo: string;
+  number: string;
+}
+
+interface Teams {
+  id: number;
+  name: string;
+}
+
 interface PlayerProps {
-  player: {
-    id: number;
-    teamId: number;
-    name: string;
-    photo: string;
-    number: string;
-  };
-  teams: [{ id: number; name: string }];
+  player: Player;
+  teams: Teams[];
 }
 
 export const PlayerCard = ({ player, teams }: PlayerProps) => {
@@ -20,11 +27,7 @@ export const PlayerCard = ({ player, teams }: PlayerProps) => {
           <span>{player.name}</span>
           <span className="text-lightRed">#{player.number}</span>
         </div>
-        <div className="text-xs text-lightGray">
-          {teams.map((team) => {
-            if (team.id === player.teamId) return team.name;
-          })}
-        </div>
+        <div className="text-xs text-lightGray">{teams.find((team) => team.id === player.teamId)?.name || "No Team"}</div>
       </div>
     </div>
   );
