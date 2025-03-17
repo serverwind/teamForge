@@ -59,18 +59,18 @@ export const Team = () => {
 
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 sm:px-2 sm:px-10">
         <div>
-          <div className="bg-white py-4 px-2">
+          <div className="bg-white py-4 px-2 sm:radius-t">
             <Breadcrumbs link="/teams" text="Teams" current={team.name} />
           </div>
-          <div className="bg-gradientGray text-white text-center flex flex-col sm:grid sm:grid-cols-[40%_60%] sm:text-left sm:justify-center sm:items-center gap-9 py-14">
+          <div className="bg-gradientGray text-white text-center flex flex-col sm:grid sm:grid-cols-[40%_60%] sm:text-left sm:justify-center sm:items-center gap-9 py-14 sm:rounded-b">
             <img src={team.logo} alt={team.name} className="sm:w-40 w-24 mx-auto" />
             
           <div>
-            <h1 className="text-lg sm:text-3xl font-bold my-4">{team.name}</h1>
+            <h1 className="text-lg sm:text-3xl font-bold mt-4 mb-12 sm:my-6">{team.name}</h1>
             <div className="sm:grid sm:grid-cols-2">
-            <div><p className="text-lg font-bold mb-4">Year of foundation</p><p className="text-sm">{team.year}</p></div>
-            <div><p className="text-lg font-bold mb-4">Conference</p><p className="text-sm">{team.conference}</p></div>
-            <div><p className="text-lg font-bold mb-4">Division</p><p className="text-sm">{team.division}</p></div>
+              <div className="sm:mb-4 mb-8"><p className="text-lg font-bold mb-1">Year of foundation</p><p className="text-sm">{team.year}</p></div>
+              <div className="sm:mb-4 mb-8"><p className="text-lg font-bold mb-1">Conference</p><p className="text-sm">{team.conference}</p></div>
+              <div><p className="text-lg font-bold mb-1">Division</p><p className="text-sm">{team.division}</p></div>
             </div>
           </div>
 
