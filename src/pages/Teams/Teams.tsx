@@ -7,6 +7,7 @@ import { Search } from "../../components/ui/Search";
 import { searchTeams } from "../../store/teamsReducer";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
+import { NotFound } from "../../components/ui/NotFound";
 
 interface TeamsProps {
   teams: [];
@@ -48,6 +49,7 @@ export const Teams = ({ teams, totalPages, currentPage, setCurrentPage }: TeamsP
             <Search setCurrentPage={setCurrentPage} search={searchTeams} />
             <ConfirmButton text="Add +" />
           </div>
+          {teams.length === 0 && <NotFound />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
             {teams.map((team: Team) => (
               <div key={`${team.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>

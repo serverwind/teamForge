@@ -7,6 +7,7 @@ import { Search } from "../../components/ui/Search";
 import { searchPlayers } from "../../store/playersReducer";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
+import { NotFound } from "../../components/ui/NotFound";
 
 interface PlayersProps {
   players: [];
@@ -45,6 +46,7 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
             <Search setCurrentPage={setCurrentPage} search={searchPlayers} />
             <ConfirmButton text="Add +" />
           </div>
+          {players.length === 0 && <NotFound />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
             {players.map((player: Player) => (
               <div key={`${player.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>
