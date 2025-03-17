@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Search } from "../../components/ui/Search";
 import { searchPlayers } from "../../store/playersReducer";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
+import { Link } from "react-router-dom";
 
 interface PlayersProps {
   players: [];
@@ -47,7 +48,9 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
             {players.map((player: Player) => (
               <div key={`${player.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>
-                <PlayerCard player={player} teams={teams} />
+                <Link to={`/player/${player.id}`}>
+                  <PlayerCard player={player} teams={teams} />
+                </Link>
               </div>
             ))}
           </section>
