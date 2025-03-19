@@ -9,6 +9,7 @@ import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
 import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
+import { SelectTeams } from "../../components/ui/SelectTeams";
 
 interface PlayersProps {
   players: [];
@@ -45,6 +46,7 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 px-2 sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <Search setCurrentPage={setCurrentPage} search={searchPlayers} />
+            <SelectTeams teams={teams} />
             <ConfirmButton text="Add +" />
           </div>
           {players.length === 0 && <NotFound />}
