@@ -8,6 +8,7 @@ import { searchTeams } from "../../store/teamsReducer";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
+import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
 
 interface TeamsProps {
   teams: [];
@@ -59,8 +60,9 @@ export const Teams = ({ teams, totalPages, currentPage, setCurrentPage }: TeamsP
               </div>
             ))}
           </section>
-          <div>
+          <div className="flex justify-between">
             <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <SelectItemsAmount setCurrentPage={setCurrentPage} />
           </div>
         </div>
       </section>

@@ -54,8 +54,12 @@ export const teamsSlice = createSlice({
         state.searched = false;
       }
     },
+    setItemsPerPage: (state, action) => {
+      state.itemsPerPage = action.payload;
+      state.page = 1;
+    }
   },
 });
 
-export const { searchTeams } = teamsSlice.actions;
+export const { searchTeams, setItemsPerPage } = teamsSlice.actions;
 export default teamsSlice.reducer;

@@ -8,6 +8,7 @@ import { searchPlayers } from "../../store/playersReducer";
 import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
+import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
 
 interface PlayersProps {
   players: [];
@@ -56,8 +57,9 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
               </div>
             ))}
           </section>
-          <div>
+          <div className="flex justify-between">
             <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <SelectItemsAmount setCurrentPage={setCurrentPage} />
           </div>
         </div>
       </section>
