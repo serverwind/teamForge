@@ -5,7 +5,6 @@ import { Pagination } from "../../components/ui/Pagination";
 import { useState, useEffect } from "react";
 import { Search } from "../../components/ui/Search";
 import { searchPlayers } from "../../store/playersReducer";
-import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
 import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
@@ -47,7 +46,6 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <Search setCurrentPage={setCurrentPage} search={searchPlayers} />
             <SelectTeams teams={teams} />
-            <ConfirmButton text="Add +" />
           </div>
           {players.length === 0 && <NotFound />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">

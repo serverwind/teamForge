@@ -10,7 +10,13 @@ interface SelectTeamsProps {
 }
 
 export const SelectTeams = ({ teams }: SelectTeamsProps) => {
+  const [filter, toggleFilter] = useState(false);
   const [selectedTeams, setSelectedTeams] = useState<Team[]>([]);
+
+  const handleFilter = () => {
+    toggleFilter(!filter);
+  };
+
   const handleSelect = (event) => {
     const chosenTeamId = Number(event.target.value);
     teams.find((team: Team) => {
@@ -28,24 +34,27 @@ export const SelectTeams = ({ teams }: SelectTeamsProps) => {
 
   return (
     <div>
-      <div>
-        {selectedTeams.map((team: Team) => (
-          <div key={team.id}>
-            {team.name}{" "}
-            <button value={team.id} onClick={(event) => handleRemove(event)}>X</button>
-          </div>
-        ))}
-      </div>
-      <select onChange={(event) => handleSelect(event)}>
-        <option value="">[Select team]</option>
-        {teams.map((team) =>
-          selectedTeams.includes(team) ? null : (
-            <option key={team.id} value={team.id}>
+      <div className={filter ? "flex flex-col gap-2" : "hidden"}>
+        <div>
+          {selectedTeams.map((team: Team) => (
+            <div key={team.id}>
               {team.name}
-            </option>
-          )
-        )}
-      </select>
+              <button value={team.id} onClick={(event) => handleRemove(event)}>X</button>
+            </div>
+          ))}
+        </div>
+        <select onChange={(event) => handleSelect(event)}>
+          <option value="">[Select team]</option>
+          {teams.map((team) =>
+            selectedTeams.includes(team) ? null : (
+              <option key={team.id} value={team.id}>
+                {team.name}
+              </option>
+            )
+          )}
+        </select>
+      </div>
+      <button onClick={handleFilter} className="bg-red text-white px-4 py-2 rounded hover:bg-lightRed transition duration-300">{ filter ? "Hide" : "Add +" }</button>
     </div>
   );
 };
