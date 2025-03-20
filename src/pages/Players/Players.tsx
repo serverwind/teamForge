@@ -23,7 +23,7 @@ interface Player {
   name: string;
 }
 
-export const Players = ({ players, teams, totalPages, currentPage, setCurrentPage }: PlayersProps) => {
+export const Players = ({ players, filteredPlayers, teams, totalPages, currentPage, setCurrentPage }: PlayersProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
 
@@ -45,17 +45,11 @@ export const Players = ({ players, teams, totalPages, currentPage, setCurrentPag
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 px-2 sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <Search setCurrentPage={setCurrentPage} search={searchPlayers} />
-            <SelectTeams teams={teams} />
+            <SelectTeams teams={teams} players={players} />
           </div>
           {players.length === 0 && <NotFound />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
-            {players.map((player: Player) => (
-              <div key={`${player.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>
-                <Link to={`/player/${player.id}`}>
-                  <PlayerCard player={player} teams={teams} />
-                </Link>
-              </div>
-            ))}
+            <PlayerCard players={filteredPlayers.length > 0 ? filteredPlayers : players} teams={teams} currentPage={currentPage} animate={animate} />
           </section>
           <div className="flex justify-between">
             <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

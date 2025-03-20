@@ -23,5 +23,5 @@ export const PlayersContainer = () => {
   const endIndex = startIndex + itemsPerPage;
   const paginatedPlayers = displayedPlayers.slice(startIndex, endIndex);
 
-  return <Players players={paginatedPlayers} teams={teams} totalPages={totalPages} setCurrentPage={setCurrentPage} currentPage={currentPage} />;
+  return <Players players={paginatedPlayers} filteredPlayers={filteredPlayers} teams={teams} totalPages={totalPages} setCurrentPage={setCurrentPage} currentPage={currentPage} />;
 };
