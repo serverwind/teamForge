@@ -49,7 +49,7 @@ export const Players = ({ players, filteredPlayers, teams, totalPages, currentPa
           </div>
           {players.length === 0 && <NotFound />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
-            <PlayerCard players={filteredPlayers.length > 0 ? filteredPlayers : players} teams={teams} currentPage={currentPage} animate={animate} />
+            <PlayerCard players={filteredPlayers.length != 0 ? filteredPlayers : players} teams={teams} currentPage={currentPage} animate={animate} />
           </section>
           <div className="flex justify-between">
             <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

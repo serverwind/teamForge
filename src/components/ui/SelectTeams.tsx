@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { filterPlayersByTeam } from "../../store/playersReducer";
 
 interface Team {
@@ -23,12 +23,16 @@ interface SelectTeamsProps {
 export const SelectTeams = ({ teams, players }: SelectTeamsProps) => {
   const [filter, toggleFilter] = useState(false);
   const [selectedTeams, setSelectedTeams] = useState<Team[]>([]);
-  const [chosenTeams, setChosenTeams] = useState<Player[]>([]);
+  const [chosenPlayers, setChosenPlayers] = useState<Player[]>([]);
   const dispatch = useDispatch();
 
   const handleFilter = () => {
     toggleFilter(!filter);
   };
+
+  useEffect(() => {
+    dispatch(filterPlayersByTeam(chosenPlayers));
+  }, [chosenPlayers, dispatch]);
 
   const handleSelect = (event) => {
     const chosenTeamId = Number(event.target.value);
@@ -39,16 +43,15 @@ export const SelectTeams = ({ teams, players }: SelectTeamsProps) => {
     });
     players.forEach((player: Player) => {
       if (player.teamId === chosenTeamId) {
-        setChosenTeams((prevPlayers) => [...prevPlayers, player]);
+        setChosenPlayers((prevPlayers) => [...prevPlayers, player]);
       }
     })
-    dispatch(filterPlayersByTeam(chosenTeams));
   };
 
   const handleRemove = (event) => {
     const chosenTeamId = Number(event.target.value);
-    if (chosenTeamId === 0) return;
     setSelectedTeams(selectedTeams.filter((team) => team.id !== chosenTeamId));
+    setChosenPlayers(chosenPlayers.filter((player) => player.teamId !== chosenTeamId));
   };
 
   return (

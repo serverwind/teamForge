@@ -16,6 +16,7 @@ interface Player {
 interface PlayersState {
   players: Player[];
   filteredPlayers: Player[];
+  filtered: boolean;
   searched: boolean;
   itemsPerPage: number;
   page: 1;
