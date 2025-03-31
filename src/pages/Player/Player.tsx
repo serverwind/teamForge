@@ -9,7 +9,6 @@ export const Player = () => {
   const { id } = useParams();
   const player = useSelector((state) => state.players.players.find((player) => player.id === Number(id)));
   const team = useSelector((state) => state.teams.teams.find((team) => team.id === player.teamId));
-  console.log(team)
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
