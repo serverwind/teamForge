@@ -5,7 +5,6 @@ import { Pagination } from "../../components/ui/Pagination";
 import { useState, useEffect } from "react";
 import { Search } from "../../components/ui/Search";
 import { searchPlayers } from "../../store/playersReducer";
-import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
 import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
 import { SelectTeams } from "../../components/ui/SelectTeams";
@@ -43,7 +42,7 @@ export const Players = ({ players, filteredPlayers, teams, totalPages, currentPa
       <section className="sm:grid sm:grid-cols-[10%_90%] h-full">
         <Sidebar toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 px-2 sm:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
+          <div className="flex flex-col sm:grid sm:grid-cols-[1fr_2fr] gap-4 sm:flex-row sm:justify-between">
             <Search setCurrentPage={setCurrentPage} search={searchPlayers} />
             <SelectTeams teams={teams} players={players} />
           </div>

@@ -19,6 +19,8 @@ export default {
     extend: {
       backgroundImage: {
         gradientGray: "linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%)",
+        chevron: "url('./src/assets/chevron.png')",
+        remove: "url('./src/assets/remove.png')",
       },
       backgroundColor: {
         dark: "#303030",
