@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { filterPlayersByTeam } from "../../store/playersReducer";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterPlayersByTeam, addSelectedTeam, removeSelectedTeam } from "../../store/playersReducer";
 
 interface Team {
   id: number;
@@ -22,8 +22,8 @@ interface SelectTeamsProps {
 
 export const SelectTeams = ({ teams, players }: SelectTeamsProps) => {
   const [filter, toggleFilter] = useState(false);
-  const [selectedTeams, setSelectedTeams] = useState<Team[]>([]);
-  const [chosenPlayers, setChosenPlayers] = useState<Player[]>([]);
+  const selectedTeams = useSelector((state) => state.players.selectedTeams);
+  const chosenPlayers = useSelector((state) => state.players.filteredPlayers);
   const [expand, setExpand] = useState(false);
   const dispatch = useDispatch();
   const isHidden = expand && selectedTeams.length > 2;
@@ -32,20 +32,16 @@ export const SelectTeams = ({ teams, players }: SelectTeamsProps) => {
     toggleFilter(!filter);
   };
 
-  useEffect(() => {
-    dispatch(filterPlayersByTeam(chosenPlayers));
-  }, [chosenPlayers, dispatch]);
-
   const handleSelect = (event) => {
     const chosenTeamId = Number(event.target.value);
     teams.find((team: Team) => {
       if (team.id === chosenTeamId && !selectedTeams.some((t) => t.id === team.id)) {
-        setSelectedTeams([...selectedTeams, { id: team.id, name: team.name }]);
+        dispatch(addSelectedTeam(team));
       }
     });
     players.forEach((player: Player) => {
       if (player.teamId === chosenTeamId) {
-        setChosenPlayers((prevPlayers) => [...prevPlayers, player]);
+        dispatch(filterPlayersByTeam(player));
       }
     })
   };
@@ -56,8 +52,8 @@ export const SelectTeams = ({ teams, players }: SelectTeamsProps) => {
 
   const handleRemove = (event) => {
     const chosenTeamId = Number(event.target.value);
-    setSelectedTeams(selectedTeams.filter((team) => team.id !== chosenTeamId));
-    setChosenPlayers(chosenPlayers.filter((player) => player.teamId !== chosenTeamId));
+    dispatch(removeSelectedTeam(chosenTeamId));
+    dispatch(filterPlayersByTeam(chosenPlayers.filter((player) => player.teamId !== chosenTeamId)));
   };
 
   return (

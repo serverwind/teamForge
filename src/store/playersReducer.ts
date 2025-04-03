@@ -13,9 +13,15 @@ interface Player {
   age: string;
 }
 
+interface Team {
+  id: number;
+  name: string;
+}
+
 interface PlayersState {
   players: Player[];
   filteredPlayers: Player[];
+  selectedTeams: Team[];
   filtered: boolean;
   searched: boolean;
   itemsPerPage: number;
@@ -32,6 +38,7 @@ const initialState: PlayersState = {
     { id: 6, name: "Deni Avdija", teamId: 2, position: "Forward", height: "6-9", weight: "240", number: "8", age: "21", photo: playersLogos.p6 },
   ],
   filteredPlayers: [],
+  selectedTeams: [],
   searched: false,
   itemsPerPage: 6,
   page: 1,
@@ -52,10 +59,16 @@ export const playersSlice = createSlice({
       }
     },
     filterPlayersByTeam: (state, action) => {
-      state.filteredPlayers = [...action.payload];
-    }
+      state.filteredPlayers.push(action.payload); 
+    },
+    addSelectedTeam: (state, action) => {
+      state.selectedTeams.push(action.payload);
+    },
+    removeSelectedTeam: (state, action) => {
+      state.selectedTeams = state.selectedTeams.filter((team) => team.id !== action.payload);
+    },
   },
 });
 
-export const { searchPlayers, filterPlayersByTeam } = playersSlice.actions;
+export const { searchPlayers, filterPlayersByTeam, addSelectedTeam, removeSelectedTeam } = playersSlice.actions;
 export default playersSlice.reducer;

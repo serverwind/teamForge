@@ -37,6 +37,8 @@ export const Players = ({ players, filteredPlayers, teams, totalPages, currentPa
     return () => clearTimeout(timer);
   }, [currentPage]);
 
+  console.log(filteredPlayers);
+
   return (
     <>
       <Header toggleSidebar={toggleSidebar} />
