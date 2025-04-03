@@ -27,9 +27,7 @@ export const Search = ({ setCurrentPage, search }: SearchProps) => {
       {(formik) => (
         <form onChange={formik.handleSubmit} className="relative">
           <input placeholder="Search..." name="search" className="bg-white rounded px-4 py-2 w-full" onChange={formik.handleChange} value={formik.values.search} />
-          <button type="submit" onClick={handlePageChange} className="absolute right-3 top-3">
-            <img src={searchIcon} alt="search" />
-          </button>
+            <img src={searchIcon} alt="search" className="absolute right-3 top-3"/>
         </form>
       )}
     </Formik>

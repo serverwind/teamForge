@@ -114,7 +114,7 @@ export const Team = () => {
                   <td className="hidden sm:table-cell text-grey text-center text-sm">Age</td>
                 </tr>
                 {players.map((player) => (
-                  <tr onClick={() => navigateToPlayer(player.id)} className="border-b border-lightGray">
+                  <tr onClick={() => navigateToPlayer(player.id)} className="border-b border-lightGray cursor-pointer">
                     <td className="text-grey text-center text-sm" key={player.id}>
                       {player.number}
                     </td>

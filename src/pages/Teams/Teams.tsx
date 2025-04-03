@@ -5,10 +5,10 @@ import { Pagination } from "../../components/ui/Pagination";
 import { useState, useEffect } from "react";
 import { Search } from "../../components/ui/Search";
 import { searchTeams } from "../../store/teamsReducer";
-import { ConfirmButton } from "../../components/ui/ConfirmButton";
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/ui/NotFound";
 import { SelectItemsAmount } from "../../components/ui/SelectItemsAmount";
+import notFoundImg from "../../assets/not-found.svg";
 
 interface TeamsProps {
   teams: [];
@@ -48,9 +48,8 @@ export const Teams = ({ teams, totalPages, currentPage, setCurrentPage }: TeamsP
         <div className="my-4 sm:my-6 sm:mx-16 sm-4 sm:py-6 px-2 sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <Search setCurrentPage={setCurrentPage} search={searchTeams} />
-            <ConfirmButton text="Add +" />
           </div>
-          {teams.length === 0 && <NotFound />}
+          {teams.length === 0 && <NotFound img={notFoundImg} text="No teams found" />}
           <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-4">
             {teams.map((team: Team) => (
               <div key={`${team.id}-${currentPage}`} className={`${animate ? "animate-fade-in" : ""}`}>

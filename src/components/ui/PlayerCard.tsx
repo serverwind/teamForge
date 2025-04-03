@@ -29,7 +29,7 @@ export const PlayerCard = ({ players, teams, currentPage, animate }: PlayerProps
                 <img src={player.photo} alt={player.name} className="h-36 mx-auto" />
               </div>
               <div className="bg-dark text-center px-2 py-4 sm:py-6 rounded-b h-24 flex flex-col gap-2 justify-center">
-                <div key={player.id} className="text-sm text-white font-bold flex gap-2 justify-center sm:text-lg">
+                <div key={player.id} className="text-xs sm:text-sm text-white font-bold flex gap-2 justify-center sm:text-lg">
                   <span>{player.name}</span>
                   <span className="text-lightRed">#{player.number}</span>
                 </div>
