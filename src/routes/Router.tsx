@@ -15,15 +15,64 @@ export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PrivateRoute><TeamsContainer /></PrivateRoute>} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <TeamsContainer />
+            </PrivateRoute>
+          }
+        />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/add-team" element={<AddTeam />} />
-        <Route path="/add-player" element={<AddPlayer />} />
-        <Route path="/teams" element={<TeamsContainer />} />
-        <Route path="/players" element={<PlayersContainer />} />
-        <Route path="/team/:id" element={<Team />} />
-        <Route path="/player/:id" element={<Player />} />
+        <Route
+          path="/add-team"
+          element={
+            <PrivateRoute>
+              <AddTeam />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/add-player"
+          element={
+            <PrivateRoute>
+              <AddPlayer />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/teams"
+          element={
+            <PrivateRoute>
+              <TeamsContainer />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/players"
+          element={
+            <PrivateRoute>
+              <PlayersContainer />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/team/:id"
+          element={
+            <PrivateRoute>
+              <Team />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/player/:id"
+          element={
+            <PrivateRoute>
+              <Player />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

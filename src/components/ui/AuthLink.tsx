@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface AuthLinkProps {
   text: string;
   question: string;
@@ -8,7 +10,7 @@ export const AuthLink = ({ text, question, link }: AuthLinkProps) => {
   return (
     <div className="text-center">
       <span className="text-grey text-sm">{question}</span>
-      <a className="text-red text-sm underline ml-1" href={link}>{text}</a>
+      <Link className="text-red text-sm underline ml-1" to={link}>{text}</Link>
     </div>
   );
 };

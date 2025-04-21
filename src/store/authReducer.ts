@@ -44,8 +44,8 @@ const authSlice = createSlice({
         state.error = true;
       } else {
         state.users.push({ id: state.users.length + 1, login, password, name });
-        state.isAuth = true;
         state.error = false;
+        state.isAuth = true;
         state.regSuccess = true;
       }
     },
