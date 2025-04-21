@@ -17,12 +17,8 @@
 - Список игроков с фильтрами и пагинацией — готово
 - Профили игроков — готово
 
-## Установка
-
-1. Клонировать репозиторий: `git clone [ссылка]`
-2. Установить зависимости: `npm install`
-3. Запустить: `npm start`
-
 ## Статус
 
 WIP (Work in Progress)
+
+DEMO: <a href="https://team-forge-two.vercel.app">https://team-forge-two.vercel.app</a>
